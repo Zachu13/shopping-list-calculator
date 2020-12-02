@@ -1,0 +1,81 @@
+<div class="wrapper">
+    <div class="form">
+        <form class="form-group" [formGroup]="priceCalculation" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline">
+                <mat-label>Postcode</mat-label>
+                <input matInput type="number" #postcode formControlName="postcode" class="form-group__input-postcode"
+                    data-input="postcode" required>
+                <mat-error>
+                    <div
+                        *ngIf="priceCalculation.get('postcode').hasError('pattern') || priceCalculation.get('postcode').hasError('required')">
+                        Enter 5 integers</div>
+                </mat-error>
+
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Total order amount</mat-label>
+                <input matInput type="number" formControlName="totalOrderAmount" class="form-group__input-total"
+                    data-input="total" required>
+                <span matPrefix>€&nbsp;</span>
+                <mat-error>
+                    <div
+                        *ngIf="priceCalculation.get('totalOrderAmount').hasError('pattern') || priceCalculation.get('totalOrderAmount').hasError('rquired')">
+                        Only integers
+                        are allowed</div>
+                </mat-error>
+            </mat-form-field>
+
+            <mat-checkbox color="primary" formControlName="longProduct">Long product</mat-checkbox>
+            <button mat-flat-button color="primary" class="form-group__submit" type="submit"
+                [disabled]='!priceCalculation.valid'>Submit</button>
+        </form>
+
+        <input color="accent" class="form__input-file" type="file" (change)="onFileSelect($event.target)" name="myfile">
+    </div>
+
+    <div class="orders">
+        <h1 class="orders__header">Shipping price calculator</h1>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="#">
+                <th mat-header-cell *matHeaderCellDef>#</th>
+                <td mat-cell *matCellDef="let element; let i = index">{{ i + 1 }}</td>
+            </ng-container> -->
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="Zone">
+                <th mat-header-cell *matHeaderCellDef>Zone</th>
+                <td mat-cell *matCellDef="let element"> {{element.zone}} </td>
+            </ng-container>
+
+            <!-- Weight Column -->
+            <ng-container matColumnDef="Shipping price">
+                <th mat-header-cell *matHeaderCellDef>Shipping price</th>
+                <td mat-cell *matCellDef="let element"> {{element.shippingCost | currency: 'EUR'}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Extra shipping price">
+                <th mat-header-cell *matHeaderCellDef>Extra shipping price</th>
+                <td mat-cell *matCellDef="let element"> {{element.extraShippingPrice | currency: 'EUR'}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Total shipping price">
+                <th mat-header-cell *matHeaderCellDef>Total shipping price</th>
+                <td mat-cell *matCellDef="let element"> {{element.totalShippingPrice | currency: 'EUR'}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="Total price">
+                <th mat-header-cell *matHeaderCellDef>Total price</th>
+                <td mat-cell *matCellDef="let element">{{element.totalPrice.toFixed(1) | currency: 'EUR'}}</td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+
+    </div>
+</div>

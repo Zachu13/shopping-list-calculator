@@ -1,0 +1,8 @@
+<div class="dialog">
+    <span class="info-text" mat-dialog-title>Would you like to save this file?</span>
+    <mat-dialog-actions align="end">
+        <button mat-button color="primary" [mat-dialog-close]="true" cdkFocusInitial
+            (click)="saveDataInStorage()">Yes</button>
+        <button mat-button color="accent" mat-dialog-close>No</button>
+    </mat-dialog-actions>
+</div>

@@ -1,0 +1,39 @@
+/* You can add global styles to this file, and also import other style files */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  font-size: 62.5%;
+  height: 100%;
+  background: linear-gradient(to right bottom, #30e8bf, #ff8235);
+}
+body {
+  font-size: 1.6rem;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+/**
+* REUSABLE COMPONENTS
+*/
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  opacity: 0;
+}
+
+/**
+* Material angular
+*/
+.mat-form-field {
+  width: 100% !important;
+}
+
+.mat-dialog-title {
+  margin: 0 !important;
+}

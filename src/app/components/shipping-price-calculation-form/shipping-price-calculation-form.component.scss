@@ -1,0 +1,80 @@
+.wrapper {
+  min-width: 63vw;
+  min-height: 50vh;
+  margin: 0 auto;
+  background-color: #f7f7f7;
+  border-radius: 0.3rem;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+
+  display: flex;
+}
+
+.form {
+  flex: 0 0 30%;
+  padding: 3.5rem;
+  background-color: #f1f1f1;
+  width: 100%;
+
+  & > *:not(:last-child) {
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    width: 100%;
+
+    &__input-postcode {
+      font-size: 2rem;
+      -moz-appearance: textfield;
+      margin-left: 1rem;
+    }
+  
+    &__input-total {
+      font-size: 2rem;
+      -moz-appearance: textfield;
+      margin-left: 1rem;
+    }
+    &__submit {
+      width: 100%;
+      margin-top: 1rem;
+    }
+  }
+
+  &__input-file {
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer;
+  }
+}
+
+.orders {
+  flex: 1 1 70%;
+  margin: 0 auto;
+  padding: 3rem 1rem 3rem;
+  text-align: center;
+
+  &__header {
+    font-size: 3.2rem;
+    font-weight: 300;
+  }
+
+  table {
+    margin: 0 auto;
+    width: 96%;
+
+    th {
+      text-align: center;
+    }
+  }
+}
+
+// Media query
+@media (max-width: 720px) {
+  .wrapper {
+    flex-wrap: wrap;
+  }
+  .form {
+    margin: 0 auto;
+  }
+}
