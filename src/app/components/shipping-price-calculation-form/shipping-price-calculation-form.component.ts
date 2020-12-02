@@ -109,7 +109,7 @@ export class ShippingPriceCalculationFormComponent implements OnInit {
     let totalShippingCost = 0;
 
     const shippingCost = this.getShippingPriceByZone(zoneCode);
-    if (isNaN(shippingCost)) {
+    if (shippingCost === -1) {
       this.errorsService.showErrorAlert(
         'The postcode does not match any zone code.',
         'Please enter a valid postcode.'
@@ -167,7 +167,7 @@ export class ShippingPriceCalculationFormComponent implements OnInit {
    * Returns the shipping cost based on the provided @postcode
    */
   getShippingPriceByZone(postcode: string): number {
-    let shippingCost: number;
+    let shippingCost = -1;
 
     this.zones.forEach((element) => {
       const elem = element;
@@ -181,7 +181,6 @@ export class ShippingPriceCalculationFormComponent implements OnInit {
   /**
    * The discount to the @totalShippingPrice will be applied if the @totalPrice of the order exceeds @discountAbove
    * @param totalPrice Total price of order
-   * @param totalShippingPrice
    * @param discountAbove The amount from which the discount will be calculated
    * @param discountPercentage Discount percentage
    */
